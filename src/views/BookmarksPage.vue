@@ -38,7 +38,7 @@
   max-width: 100%;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 1200px) {
   .innerBox {
     grid-template-columns: repeat(2, 1fr);
   }

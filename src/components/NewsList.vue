@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-for="news in newsList" :key="news.title" class="news-item">
-      <img :src="news.urlToImage" alt="Thumbnail" />
+      <img :src="news.urlToImage" alt="Thumbnail" class="news-image" />
       <div class="news-cardData">
         <h3>{{ news.title }}</h3>
-        <div style="display: flex; flex-direction: column;">
+        <div class="news-meta">
           <span>{{ news.source.name }}</span>
           <span>{{ news.author || "Unknown" }}</span>
         </div>
@@ -20,9 +20,9 @@
           </button>
         </div>
       </div>
-      <p class="newsitem-publish">
-        Published: {{ new Date(news.publishedAt).toLocaleDateString() }}
-      </p>
+      <div class="newsitem-publish">
+        <p>Published: {{ new Date(news.publishedAt).toLocaleDateString() }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@ import { mapMutations, mapState } from "vuex";
 export default {
   name: "NewsList",
   props: {
-    newsList: Array, 
+    newsList: Array,
   },
   computed: {
     ...mapState(["bookmarks"]),
@@ -59,53 +59,54 @@ export default {
 </script>
 
 
+
 <style>
 .news-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #e0e0e0;
-}
-
-.news-item img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
   border-radius: 5px;
+  overflow: hidden;
+  background: #ffffff;
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.news-item h3 {
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #333;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.news-cardData span {
-  font-size: 14px;
-  color: grey;
-}
-
-.news-item p {
-  margin: 0.2rem 0;
-  font-size: 14px;
-  color: #555;
+.news-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
 }
 
 .news-cardData {
-  padding: 1rem 1.5rem;
+  flex-grow: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.newsitem-publish {
-  border-top: 1px solid grey;
-  padding: 0.75rem 1.5rem;
-  background: #f4e8e8;
-  margin-bottom: 0 !important;
+.news-meta {
+  margin: 0.5rem 0;
+  font-size: 14px;
+  color: grey;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-description {
+  color: black;
+  font-size: 16px;
+  margin-top: 0.5rem;
+  flex-grow: 1;
 }
 
 .news-SelectButton {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  align-items: center;
 }
 
 button {
@@ -116,23 +117,23 @@ button {
   border-radius: 5px;
 }
 
-.news-description {
-  color: black !important;
-  font-size: 16px !important;
-}
-
 .bookmark {
   cursor: pointer;
   background: none;
   padding: 0;
-
-  img {
-    height: 19px;
-    width: 18px;
-  }
 }
 
-.bookmarked {
-  color: yellow;
+.bookmark img {
+  height: 19px;
+  width: 18px;
 }
+
+.newsitem-publish {
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 0.9rem;
+  background-color: #f4e8e8;
+  border-top: 1px solid #ddd;
+}
+
 </style>
