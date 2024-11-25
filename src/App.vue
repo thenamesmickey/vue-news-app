@@ -58,7 +58,7 @@ nav .active-tab {
   background-color: white;
   color: #4caf50;
   font-weight: bold;
-  pointer-events: none; /* Prevent hover effects */
+  pointer-events: none; 
 }
 
 main {

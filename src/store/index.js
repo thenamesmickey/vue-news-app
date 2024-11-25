@@ -41,7 +41,6 @@ const store = createStore({
       const apiKey = "92d593bfe4eb4e459cb66558f16475ce";
       const baseUrl = "https://newsapi.org/v2/top-headlines";
     
-      // Construct the API URL with parameters
       const params = new URLSearchParams({
         q: keyword.trim(),    
         ...(country && { country }), 
