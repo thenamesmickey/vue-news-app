@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>{{ selectedNews.title }}</h2>
-    <img :src="selectedNews.urlToImage" alt="News Image" />
+    <img :src="selectedNews.urlToImage" alt="News Image" style="width:100%" />
     <p>{{ selectedNews.description }}</p>
   </div>
 </template>
